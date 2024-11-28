@@ -1,0 +1,160 @@
+from typing import Optional
+from pydantic import BaseModel
+
+class NFLTeam(BaseModel):
+    id: int
+    conference: str
+    division: str
+    location: str
+    name: str
+    full_name: str
+    abbreviation: str
+
+class NFLPlayer(BaseModel):
+    id: int
+    first_name: str
+    last_name: str
+    position: str
+    position_abbreviation: str
+    height: str
+    weight: str
+    jersey_number: Optional[str]
+    college: Optional[str]
+    experience: Optional[str]
+    age: Optional[int]
+    team: NFLTeam
+
+class NFLGame(BaseModel):
+    id: int
+    visitor_team: NFLTeam
+    home_team: NFLTeam
+    summary: str
+    venue: str
+    week: int
+    date: str
+    season: int
+    postseason: bool
+    status: str
+    home_team_score: int
+    visitor_team_score: int
+
+class NFLStats(BaseModel):
+    player: NFLPlayer
+    team: NFLTeam
+    game: NFLGame
+    passing_completions: Optional[int]
+    passing_attempts: Optional[int]
+    passing_yards: Optional[int]
+    yards_per_pass_attempt: Optional[float]
+    passing_touchdowns: Optional[int]
+    passing_interceptions: Optional[int]
+    sacks: Optional[int]
+    qbr: Optional[float]
+    qb_rating: Optional[float]
+    rushing_attempts: Optional[int]
+    rushing_yards: Optional[int]
+    yards_per_rush_attempt: Optional[float]
+    rushing_touchdowns: Optional[int]
+    receptions: Optional[int]
+    receiving_yards: Optional[int]
+    yards_per_reception: Optional[float]
+    receiving_touchdowns: Optional[int]
+    fumbles: Optional[int]
+    fumbles_lost: Optional[int]
+
+class NFLStandings(BaseModel):
+    team: NFLTeam
+    win_streak: int
+    points_for: int
+    points_against: int
+    playoff_seed: Optional[int]
+    point_differential: int
+    overall_record: str
+    conference_record: str
+    division_record: str
+    wins: int
+    losses: int
+    ties: int
+    home_record: str
+    road_record: str
+    season: int
+
+class NFLPlayerInjury(BaseModel):
+    player: NFLPlayer
+    status: str
+    comment: str
+    date: str
+
+class NFLSeasonStats(BaseModel):
+    player: NFLPlayer
+    games_played: int
+    season: int
+    postseason: bool
+    passing_completions: Optional[int]
+    passing_attempts: Optional[int]
+    passing_yards: Optional[int]
+    passing_yards_per_game: Optional[float]
+    passing_touchdowns: Optional[int]
+    passing_interceptions: Optional[int]
+    passing_completion_pct: Optional[float]
+    rushing_attempts: Optional[int]
+    rushing_yards: Optional[int]
+    rushing_yards_per_game: Optional[float]
+    rushing_touchdowns: Optional[int]
+    receiving_receptions: Optional[int]
+    receiving_yards: Optional[int]
+    receiving_touchdowns: Optional[int]
+    receiving_targets: Optional[int]
+
+class NFLAdvancedRushingStats(BaseModel):
+    player: NFLPlayer
+    season: int
+    week: int
+    avg_time_to_los: float
+    expected_rush_yards: float
+    rush_attempts: int
+    rush_pct_over_expected: float
+    rush_touchdowns: int
+    rush_yards: int
+    rush_yards_over_expected: float
+    rush_yards_over_expected_per_att: float
+    efficiency: float
+    percent_attempts_gte_eight_defenders: float
+    avg_rush_yards: float
+
+class NFLAdvancedPassingStats(BaseModel):
+    player: NFLPlayer
+    season: int
+    week: int
+    aggressiveness: float
+    attempts: int
+    avg_air_distance: float
+    avg_air_yards_differential: float
+    avg_air_yards_to_sticks: float
+    avg_completed_air_yards: float
+    avg_intended_air_yards: float
+    avg_time_to_throw: float
+    completion_percentage: float
+    completion_percentage_above_expectation: float
+    completions: int
+    expected_completion_percentage: float
+    max_air_distance: float
+    max_completed_air_distance: float
+    passer_rating: float
+
+class NFLAdvancedReceivingStats(BaseModel):
+    player: NFLPlayer
+    season: int
+    week: int
+    avg_cushion: float
+    avg_expected_yac: float
+    avg_intended_air_yards: float
+    avg_separation: float
+    avg_yac: float
+    avg_yac_above_expectation: float
+    catch_percentage: float
+    percent_share_of_intended_air_yards: float
+    rec_touchdowns: int
+    receptions: int
+    targets: int
+    yards: int

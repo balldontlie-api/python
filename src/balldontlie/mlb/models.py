@@ -1,0 +1,171 @@
+from typing import Optional, List
+from pydantic import BaseModel
+
+class MLBTeam(BaseModel):
+    id: int
+    slug: str
+    abbreviation: str
+    display_name: str
+    short_display_name: str
+    name: str
+    location: str
+    league: str
+    division: str
+
+class MLBPlayer(BaseModel):
+    id: int
+    first_name: str
+    last_name: str
+    full_name: str
+    debut_year: Optional[int]
+    jersey: Optional[str]
+    college: Optional[str]
+    position: str
+    active: bool
+    birth_place: Optional[str]
+    dob: Optional[str]
+    age: Optional[int]
+    height: Optional[str]
+    weight: Optional[str]
+    draft: Optional[str]
+    bats_throws: Optional[str]
+    team: MLBTeam
+
+class MLBTeamData(BaseModel):
+    hits: int
+    runs: int
+    errors: int
+    inning_scores: List[int]
+
+class MLBGame(BaseModel):
+    id: int
+    home_team_name: str
+    away_team_name: str
+    home_team: MLBTeam
+    away_team: MLBTeam
+    season: int
+    postseason: bool
+    date: str
+    home_team_data: MLBTeamData
+    away_team_data: MLBTeamData
+    venue: Optional[str]
+    attendance: Optional[int]
+    status: str
+
+class MLBStats(BaseModel):
+    player: MLBPlayer
+    game: MLBGame
+    team_name: str
+    at_bats: Optional[int]
+    runs: Optional[int]
+    hits: Optional[int]
+    rbi: Optional[int]
+    hr: Optional[int]
+    bb: Optional[int]
+    k: Optional[int]
+    avg: Optional[float]
+    obp: Optional[float]
+    slg: Optional[float]
+    ip: Optional[float]
+    p_hits: Optional[int]
+    p_runs: Optional[int]
+    er: Optional[int]
+    p_bb: Optional[int]
+    p_k: Optional[int]
+    p_hr: Optional[int]
+    pitch_count: Optional[int]
+    strikes: Optional[int]
+    era: Optional[float]
+
+class MLBStandings(BaseModel):
+    team: MLBTeam
+    league_name: str
+    league_short_name: str
+    division_name: str
+    division_short_name: str
+    wins: int
+    losses: int
+    win_percent: float
+    games_behind: float
+    streak: int
+    last_ten_games: str
+    season: int
+
+class MLBSeasonStats(BaseModel):
+    player: MLBPlayer
+    team_name: str
+    season: int
+    postseason: bool
+    batting_gp: Optional[int]
+    batting_ab: Optional[int]
+    batting_r: Optional[int]
+    batting_h: Optional[int]
+    batting_avg: Optional[float]
+    batting_2b: Optional[int]
+    batting_3b: Optional[int]
+    batting_hr: Optional[int]
+    batting_rbi: Optional[int]
+    batting_bb: Optional[int]
+    batting_so: Optional[int]
+    batting_sb: Optional[int]
+    batting_obp: Optional[float]
+    batting_slg: Optional[float]
+    batting_ops: Optional[float]
+    batting_war: Optional[float]
+    pitching_gp: Optional[int]
+    pitching_gs: Optional[int]
+    pitching_w: Optional[int]
+    pitching_l: Optional[int]
+    pitching_era: Optional[float]
+    pitching_sv: Optional[int]
+    pitching_ip: Optional[float]
+    pitching_h: Optional[int]
+    pitching_er: Optional[int]
+    pitching_hr: Optional[int]
+    pitching_bb: Optional[int]
+    pitching_k: Optional[int]
+    pitching_war: Optional[float]
+
+class MLBTeamSeasonStats(BaseModel):
+    team: MLBTeam
+    team_name: str
+    postseason: bool
+    season: int
+    gp: int
+    batting_ab: int
+    batting_r: int
+    batting_h: int
+    batting_2b: int
+    batting_3b: int
+    batting_hr: int
+    batting_rbi: int
+    batting_bb: int
+    batting_so: int
+    batting_sb: int
+    batting_avg: float
+    batting_obp: float
+    batting_slg: float
+    batting_ops: float
+    pitching_w: int
+    pitching_l: int
+    pitching_era: float
+    pitching_sv: int
+    pitching_ip: float
+    pitching_h: int
+    pitching_er: int
+    pitching_hr: int
+    pitching_bb: int
+    pitching_k: int
+    fielding_e: int
+    fielding_fp: float
+
+class MLBPlayerInjury(BaseModel):
+    player: MLBPlayer
+    date: str
+    return_date: Optional[str]
+    type: str
+    detail: str
+    side: Optional[str]
+    status: str
+    long_comment: Optional[str]
+    short_comment: Optional[str]
