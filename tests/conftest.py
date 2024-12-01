@@ -2,7 +2,7 @@ import os
 import pytest
 import warnings
 import urllib3
-from balldontlie import BallDontLieClient
+from balldontlie import BalldontlieAPI
 
 warnings.filterwarnings("ignore", category=urllib3.exceptions.NotOpenSSLWarning)
 
@@ -12,4 +12,4 @@ def api_key():
 
 @pytest.fixture
 def client(api_key):
-    return BallDontLieClient(api_key=api_key)
+    return BalldontlieAPI(api_key=api_key)

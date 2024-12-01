@@ -1,1 +1,1 @@
-from .client import BallDontLieClient
+from .client import BalldontlieAPI

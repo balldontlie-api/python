@@ -68,24 +68,24 @@ class NBAStats(BaseModel):
 
 class NBASeasonAverages(BaseModel):
     games_played: int
-    pts: float
-    ast: float
-    reb: float
-    stl: float
-    blk: float
-    turnover: float
+    pts: Optional[float]
+    ast: Optional[float]
+    reb: Optional[float]
+    stl: Optional[float]
+    blk: Optional[float]
+    turnover: Optional[float]
     min: str
-    fgm: float
-    fga: float
-    fg_pct: float
-    fg3m: float
-    fg3a: float
-    fg3_pct: float
-    ftm: float
-    fta: float
-    ft_pct: float
-    oreb: float
-    dreb: float
+    fgm: Optional[float]
+    fga: Optional[float]
+    fg_pct: Optional[float]
+    fg3m: Optional[float]
+    fg3a: Optional[float]
+    fg3_pct: Optional[float]
+    ftm: Optional[float]
+    fta: Optional[float]
+    ft_pct: Optional[float]
+    oreb: Optional[float]
+    dreb: Optional[float]
     player_id: int
     season: int
 
@@ -144,21 +144,21 @@ class NBAOdds(BaseModel):
 
 class NBAAdvancedStats(BaseModel):
     id: int
-    pie: float  # player impact estimate
-    pace: float
-    assist_percentage: float
-    assist_ratio: float
-    assist_to_turnover: float
-    defensive_rating: float
-    defensive_rebound_percentage: float
-    effective_field_goal_percentage: float
-    net_rating: float
-    offensive_rating: float
-    offensive_rebound_percentage: float
-    rebound_percentage: float
-    true_shooting_percentage: float
-    turnover_ratio: float
-    usage_percentage: float
+    pie: Optional[float]
+    pace: Optional[float]
+    assist_percentage: Optional[float]
+    assist_ratio: Optional[float]
+    assist_to_turnover: Optional[float]
+    defensive_rating: Optional[float]
+    defensive_rebound_percentage: Optional[float]
+    effective_field_goal_percentage: Optional[float]
+    net_rating: Optional[float]
+    offensive_rating: Optional[float]
+    offensive_rebound_percentage: Optional[float]
+    rebound_percentage: Optional[float]
+    true_shooting_percentage: Optional[float]
+    turnover_ratio: Optional[float]
+    usage_percentage: Optional[float]
     player: NBAPlayer
     team: NBATeam
     game: NBAGame

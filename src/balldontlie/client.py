@@ -2,7 +2,7 @@ from .nba.api import NBAApi
 from .nfl.api import NFLApi
 from .mlb.api import MLBApi
 
-class BallDontLieClient:
+class BalldontlieAPI:
     def __init__(self, api_key: str, base_url: str = "https://api.balldontlie.io"):
         self.api_key = api_key
         self.base_url = base_url.rstrip('/')

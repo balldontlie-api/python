@@ -12,8 +12,8 @@ class ListResponse(BaseResponse[List[T]]):
     pass
 
 class PaginationMeta(BaseModel):
-    per_page: Optional[int]
-    next_cursor: Optional[int]
+    per_page: Optional[int] = None
+    next_cursor: Optional[int] = None
 
 class PaginatedListResponse(BaseResponse[List[T]]):
     meta: PaginationMeta
@@ -24,15 +24,15 @@ class BaseAPI(Generic[T]):
     def __init__(self, client):
         self.client = client
 
-    def _prepare_params(self, params: Dict[str, Any]) -> Dict[str, Any]:
+    def _prepare_params(self, params: Dict[str, Any]) -> Dict[str, list[str]]:
         processed = {}
         for key, value in params.items():
             if value is None:
                 continue
             if isinstance(value, list):
-                processed[f"{key}[]"] = value
+                processed[f"{key}[]"] = [str(item) for item in value]
             else:
-                processed[key] = value
+                processed[key] = [str(value)]
         return processed
 
     def _request(
@@ -43,15 +43,28 @@ class BaseAPI(Generic[T]):
         data: Optional[Dict[str, Any]] = None,
         json: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
-        url = f"{self.client.base_url}/{path.lstrip('/')}"
+        url = self.client._build_url(path)
         headers = self.client._get_headers()
         
         try:
-            response = requests.request(
+            session = requests.Session()
+            
+            if params:
+                prepared_params = []
+                for key, values in params.items():
+                    if isinstance(values, list):
+                        for value in values:
+                            prepared_params.append((key, value))
+                    else:
+                        prepared_params.append((key, values[0]))
+            else:
+                prepared_params = None
+
+            response = session.request(
                 method=method,
                 url=url,
                 headers=headers,
-                params=params,
+                params=prepared_params,
                 data=data,
                 json=json
             )
@@ -77,6 +90,8 @@ class BaseAPI(Generic[T]):
                 
         except requests.exceptions.RequestException as e:
             raise BallDontLieException(f"Request failed: {str(e)}")
+        finally:
+            session.close()
 
     def _get(self, path: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         return self._request("GET", path, params=params)
