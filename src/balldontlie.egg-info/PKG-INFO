@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: balldontlie
+Version: 0.1.0
+Summary: Python SDK for the BALLDONTLIE API
+Author-email: balldontlie <hello@balldontlie.io>
+License: MIT
+Requires-Python: >=3.8
+Requires-Dist: requests>=2.31.0
+Requires-Dist: pydantic>=2.5.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.1.0; extra == "dev"
+Requires-Dist: black>=23.7.0; extra == "dev"
+Requires-Dist: isort>=5.12.0; extra == "dev"
+Requires-Dist: mypy>=1.5.0; extra == "dev"
+Requires-Dist: flake8>=6.1.0; extra == "dev"
