@@ -33,9 +33,9 @@ api.nfl.teams.list()
 ## API Reference
 
 Check out the full API documentation:
-[NBA](nba.balldontlie.io)
-[NFL](nfl.balldontlie.io)
-[MLB](mlb.balldontlie.io)
+[NBA](https://nba.balldontlie.io)
+[NFL](https://nfl.balldontlie.io)
+[MLB](https://mlb.balldontlie.io)
 
 ## Error Handling
 

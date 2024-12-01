@@ -1,3 +1,5 @@
 myenv/
 src/.DS_STORE
 dist/
+src/balldontlie.egg-info/
+
