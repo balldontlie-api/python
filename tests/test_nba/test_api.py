@@ -1,5 +1,12 @@
 import pytest
 
+from balldontlie.exceptions import (
+    AuthenticationError,
+    NotFoundError,
+    RateLimitError,
+    ServerError,
+)
+
 
 def test_list_nba_teams(client):
     response = client.nba.teams.list()
@@ -139,3 +146,16 @@ def test_nba_odds(client):
     assert odds.type is not None
     assert odds.vendor is not None
     assert odds.live is not None
+
+
+def test_authentication_error(client):
+    client.api_key = "invalid_key"
+    with pytest.raises(AuthenticationError) as exc_info:
+        client.nba.teams.list()
+    assert exc_info.value.status_code == 401
+
+
+def test_not_found_error(client):
+    with pytest.raises(NotFoundError) as exc_info:
+        client.nba.teams.get(99999)
+    assert exc_info.value.status_code == 404
