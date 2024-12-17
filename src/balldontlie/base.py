@@ -1,6 +1,7 @@
+import os
 from typing import Optional, Dict, Any, List, TypeVar, Generic
 import requests
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from .exceptions import (
     BallDontLieException,
     AuthenticationError,
@@ -32,6 +33,9 @@ class PaginatedListResponse(BaseResponse[List[T]]):
 
 class BaseAPI(Generic[T]):
     model_class = None
+    _dev_mode = os.environ.get("ENV", "").lower() in [
+        "dev",
+    ]
 
     def __init__(self, client):
         self.client = client
@@ -134,7 +138,13 @@ class BaseAPI(Generic[T]):
     ) -> BaseResponse[T]:
         processed_params = self._prepare_params(params) if params else None
         response = self._get(path, params=processed_params)
-        data = self.model_class(**response["data"])
+
+        if self._dev_mode:
+            data = self.model_class(**response["data"])
+        else:
+            # Use model_construct in prod so that we don't blow up on validation errors
+            data = self.model_class.model_construct(**response["data"])
+
         return BaseResponse[T](data=data)
 
     def _get_list(
@@ -142,7 +152,14 @@ class BaseAPI(Generic[T]):
     ) -> ListResponse[T]:
         processed_params = self._prepare_params(params) if params else None
         response = self._get(path, params=processed_params)
-        data = [self.model_class(**item) for item in response["data"]]
+
+        if self._dev_mode:
+            data = [self.model_class(**item) for item in response["data"]]
+        else:
+            data = [
+                self.model_class.model_construct(**item) for item in response["data"]
+            ]
+
         return ListResponse[T](data=data)
 
     def _get_paginated_list(
@@ -150,5 +167,12 @@ class BaseAPI(Generic[T]):
     ) -> PaginatedListResponse[T]:
         processed_params = self._prepare_params(params)
         response = self._get(path, params=processed_params)
-        data = [self.model_class(**item) for item in response["data"]]
+
+        if self._dev_mode:
+            data = [self.model_class(**item) for item in response["data"]]
+        else:
+            data = [
+                self.model_class.model_construct(**item) for item in response["data"]
+            ]
+
         return PaginatedListResponse[T](data=data, meta=response.get("meta", {}))

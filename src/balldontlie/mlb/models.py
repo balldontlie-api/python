@@ -1,6 +1,7 @@
 from typing import Optional, List
 from pydantic import BaseModel
 
+
 class MLBTeam(BaseModel):
     id: int
     slug: str
@@ -11,6 +12,7 @@ class MLBTeam(BaseModel):
     location: str
     league: str
     division: str
+
 
 class MLBPlayer(BaseModel):
     id: int
@@ -31,11 +33,13 @@ class MLBPlayer(BaseModel):
     bats_throws: Optional[str]
     team: Optional[MLBTeam] = None
 
+
 class MLBGameTeamData(BaseModel):
     hits: int
     runs: int
     errors: int
     inning_scores: List[int]
+
 
 class MLBGameScoringSummary(BaseModel):
     play: str
@@ -43,6 +47,7 @@ class MLBGameScoringSummary(BaseModel):
     period: str
     away_score: int
     home_score: int
+
 
 class MLBGame(BaseModel):
     id: int
@@ -63,6 +68,7 @@ class MLBGame(BaseModel):
     clock: Optional[int]
     display_clock: Optional[str]
     scoring_summary: Optional[List[MLBGameScoringSummary]]
+
 
 class MLBStats(BaseModel):
     player: MLBPlayer
@@ -88,6 +94,7 @@ class MLBStats(BaseModel):
     pitch_count: Optional[int]
     strikes: Optional[int]
     era: Optional[float]
+
 
 class MLBStandings(BaseModel):
     season: int
@@ -136,6 +143,7 @@ class MLBStandings(BaseModel):
     intra_division: Optional[str]
     intra_league: Optional[str]
     last_ten_games: Optional[str]
+
 
 class MLBSeasonStats(BaseModel):
     player: MLBPlayer
@@ -187,47 +195,49 @@ class MLBSeasonStats(BaseModel):
     fielding_cs_percent: Optional[float]
     fielding_sba: Optional[int]
 
+
 class MLBTeamSeasonStats(BaseModel):
     team: MLBTeam
     team_name: str
     postseason: bool
     season: int
-    gp: int
-    batting_ab: int
-    batting_r: int
-    batting_h: int
-    batting_2b: int
-    batting_3b: int
-    batting_hr: int
-    batting_rbi: int
-    batting_tb: int
-    batting_bb: int
-    batting_so: int
-    batting_sb: int
-    batting_avg: float
-    batting_obp: float
-    batting_slg: float
-    batting_ops: float
-    pitching_w: int
-    pitching_l: int
-    pitching_era: float
-    pitching_sv: int
-    pitching_cg: int
-    pitching_sho: int
-    pitching_qs: int
-    pitching_ip: float
-    pitching_h: int
-    pitching_er: int
-    pitching_hr: int
-    pitching_bb: int
-    pitching_k: int
-    pitching_oba: float
-    pitching_whip: float
-    fielding_e: int
-    fielding_fp: float
-    fielding_tc: int
-    fielding_po: int
-    fielding_a: int
+    gp: Optional[int] = None
+    batting_ab: Optional[int] = None
+    batting_r: Optional[int] = None
+    batting_h: Optional[int] = None
+    batting_2b: Optional[int] = None
+    batting_3b: Optional[int] = None
+    batting_hr: Optional[int] = None
+    batting_rbi: Optional[int] = None
+    batting_tb: Optional[int] = None
+    batting_bb: Optional[int] = None
+    batting_so: Optional[int] = None
+    batting_sb: Optional[int] = None
+    batting_avg: Optional[float] = None
+    batting_obp: Optional[float] = None
+    batting_slg: Optional[float] = None
+    batting_ops: Optional[float] = None
+    pitching_w: Optional[int] = None
+    pitching_l: Optional[int] = None
+    pitching_era: Optional[float] = None
+    pitching_sv: Optional[int] = None
+    pitching_cg: Optional[int] = None
+    pitching_sho: Optional[int] = None
+    pitching_qs: Optional[int] = None
+    pitching_ip: Optional[float] = None
+    pitching_h: Optional[int] = None
+    pitching_er: Optional[int] = None
+    pitching_hr: Optional[int] = None
+    pitching_bb: Optional[int] = None
+    pitching_k: Optional[int] = None
+    pitching_oba: Optional[float] = None
+    pitching_whip: Optional[float] = None
+    fielding_e: Optional[int] = None
+    fielding_fp: Optional[float] = None
+    fielding_tc: Optional[int] = None
+    fielding_po: Optional[int] = None
+    fielding_a: Optional[int] = None
+
 
 class MLBPlayerInjury(BaseModel):
     player: MLBPlayer
