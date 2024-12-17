@@ -33,7 +33,7 @@ class PaginatedListResponse(BaseResponse[List[T]]):
 
 class BaseAPI(Generic[T]):
     model_class = None
-    _dev_mode = os.environ.get("ENV", "").lower() in [
+    _dev_mode = os.environ.get("BALLDONTLIE_ENV", "").lower() in [
         "dev",
     ]
 
