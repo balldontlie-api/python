@@ -19,34 +19,34 @@ class MLBPlayer(BaseModel):
     first_name: str
     last_name: str
     full_name: str
-    debut_year: Optional[int]
-    jersey: Optional[str]
-    college: Optional[str]
-    position: Optional[str]
-    active: Optional[bool]
-    birth_place: Optional[str]
-    dob: Optional[str]
-    age: Optional[int]
-    height: Optional[str]
-    weight: Optional[str]
-    draft: Optional[str]
-    bats_throws: Optional[str]
+    debut_year: Optional[float] = None
+    jersey: Optional[str] = None
+    college: Optional[str] = None
+    position: Optional[str] = None
+    active: Optional[bool] = None
+    birth_place: Optional[str] = None
+    dob: Optional[str] = None
+    age: Optional[float] = None
+    height: Optional[str] = None
+    weight: Optional[str] = None
+    draft: Optional[str] = None
+    bats_throws: Optional[str] = None
     team: Optional[MLBTeam] = None
 
 
 class MLBGameTeamData(BaseModel):
-    hits: int
-    runs: int
-    errors: int
-    inning_scores: List[int]
+    hits: Optional[float] = None
+    runs: Optional[float] = None
+    errors: Optional[float] = None
+    inning_scores: Optional[List[int]] = None
 
 
 class MLBGameScoringSummary(BaseModel):
     play: str
     inning: str
     period: str
-    away_score: int
-    home_score: int
+    away_score: Optional[float] = None
+    home_score: Optional[float] = None
 
 
 class MLBGame(BaseModel):
@@ -58,42 +58,42 @@ class MLBGame(BaseModel):
     season: int
     postseason: bool
     date: str
-    home_team_data: Optional[MLBGameTeamData]
-    away_team_data: Optional[MLBGameTeamData]
-    venue: Optional[str]
-    attendance: Optional[int]
-    status: Optional[str]
-    conference_play: Optional[bool]
-    period: Optional[int]
-    clock: Optional[int]
-    display_clock: Optional[str]
-    scoring_summary: Optional[List[MLBGameScoringSummary]]
+    home_team_data: Optional[MLBGameTeamData] = None
+    away_team_data: Optional[MLBGameTeamData] = None
+    venue: Optional[str] = None
+    attendance: Optional[float] = None
+    status: Optional[str] = None
+    conference_play: Optional[bool] = None
+    period: Optional[float] = None
+    clock: Optional[float] = None
+    display_clock: Optional[str] = None
+    scoring_summary: Optional[List[MLBGameScoringSummary]] = None
 
 
 class MLBStats(BaseModel):
     player: MLBPlayer
     game: MLBGame
     team_name: str
-    at_bats: Optional[int]
-    runs: Optional[int]
-    hits: Optional[int]
-    rbi: Optional[int]
-    hr: Optional[int]
-    bb: Optional[int]
-    k: Optional[int]
-    avg: Optional[float]
-    obp: Optional[float]
-    slg: Optional[float]
-    ip: Optional[float]
-    p_hits: Optional[int]
-    p_runs: Optional[int]
-    er: Optional[int]
-    p_bb: Optional[int]
-    p_k: Optional[int]
-    p_hr: Optional[int]
-    pitch_count: Optional[int]
-    strikes: Optional[int]
-    era: Optional[float]
+    at_bats: Optional[float] = None
+    runs: Optional[float] = None
+    hits: Optional[float] = None
+    rbi: Optional[float] = None
+    hr: Optional[float] = None
+    bb: Optional[float] = None
+    k: Optional[float] = None
+    avg: Optional[float] = None
+    obp: Optional[float] = None
+    slg: Optional[float] = None
+    ip: Optional[float] = None
+    p_hits: Optional[float] = None
+    p_runs: Optional[float] = None
+    er: Optional[float] = None
+    p_bb: Optional[float] = None
+    p_k: Optional[float] = None
+    p_hr: Optional[float] = None
+    pitch_count: Optional[float] = None
+    strikes: Optional[float] = None
+    era: Optional[float] = None
 
 
 class MLBStandings(BaseModel):
@@ -104,45 +104,45 @@ class MLBStandings(BaseModel):
     division_name: str
     division_short_name: str
     team_name: str
-    ot_losses: int
-    ot_wins: int
-    avg_points_against: float
-    avg_points_for: float
-    clincher: Optional[str]
-    differential: Optional[float]
-    division_win_percent: Optional[float]
-    games_behind: Optional[int]
-    games_played: Optional[int]
-    league_win_percent: Optional[float]
-    losses: Optional[int]
-    playoff_seed: Optional[int]
-    point_differential: Optional[int]
-    game_back_points: Optional[int]
-    points_against: Optional[int]
-    points_for: Optional[int]
-    streak: Optional[int]
-    ties: Optional[int]
-    win_percent: Optional[float]
-    wins: Optional[int]
-    division_games_behind: Optional[int]
-    division_percent: Optional[int]
-    division_tied: Optional[int]
-    home_losses: Optional[int]
-    home_ties: Optional[int]
-    home_wins: Optional[int]
-    magic_number_division: Optional[int]
-    magic_number_wildcard: Optional[int]
-    playoff_percent: Optional[int]
-    road_losses: Optional[int]
-    road_ties: Optional[int]
-    road_wins: Optional[int]
-    wildcard_percent: Optional[float]
-    total: Optional[str]
-    home: Optional[str]
-    road: Optional[str]
-    intra_division: Optional[str]
-    intra_league: Optional[str]
-    last_ten_games: Optional[str]
+    ot_losses: Optional[float] = None
+    ot_wins: Optional[float] = None
+    avg_points_against: Optional[float] = None
+    avg_points_for: Optional[float] = None
+    clincher: Optional[str] = None
+    differential: Optional[float] = None
+    division_win_percent: Optional[float] = None
+    games_behind: Optional[float] = None
+    games_played: Optional[float] = None
+    league_win_percent: Optional[float] = None
+    losses: Optional[float] = None
+    playoff_seed: Optional[float] = None
+    point_differential: Optional[float] = None
+    game_back_points: Optional[float] = None
+    points_against: Optional[float] = None
+    points_for: Optional[float] = None
+    streak: Optional[float] = None
+    ties: Optional[float] = None
+    win_percent: Optional[float] = None
+    wins: Optional[float] = None
+    division_games_behind: Optional[float] = None
+    division_percent: Optional[float] = None
+    division_tied: Optional[float] = None
+    home_losses: Optional[float] = None
+    home_ties: Optional[float] = None
+    home_wins: Optional[float] = None
+    magic_number_division: Optional[float] = None
+    magic_number_wildcard: Optional[float] = None
+    playoff_percent: Optional[float] = None
+    road_losses: Optional[float] = None
+    road_ties: Optional[float] = None
+    road_wins: Optional[float] = None
+    wildcard_percent: Optional[float] = None
+    total: Optional[str] = None
+    home: Optional[str] = None
+    road: Optional[str] = None
+    intra_division: Optional[str] = None
+    intra_league: Optional[str] = None
+    last_ten_games: Optional[str] = None
 
 
 class MLBSeasonStats(BaseModel):
@@ -150,50 +150,50 @@ class MLBSeasonStats(BaseModel):
     team_name: str
     season: int
     postseason: bool
-    batting_gp: Optional[int]
-    batting_ab: Optional[int]
-    batting_r: Optional[int]
-    batting_h: Optional[int]
-    batting_avg: Optional[float]
-    batting_2b: Optional[int]
-    batting_3b: Optional[int]
-    batting_hr: Optional[int]
-    batting_rbi: Optional[int]
-    batting_bb: Optional[int]
-    batting_so: Optional[int]
-    batting_sb: Optional[int]
-    batting_obp: Optional[float]
-    batting_slg: Optional[float]
-    batting_ops: Optional[float]
-    batting_war: Optional[float]
-    pitching_gp: Optional[int]
-    pitching_gs: Optional[int]
-    pitching_w: Optional[int]
-    pitching_l: Optional[int]
-    pitching_era: Optional[float]
-    pitching_sv: Optional[int]
-    pitching_ip: Optional[float]
-    pitching_h: Optional[int]
-    pitching_er: Optional[int]
-    pitching_hr: Optional[int]
-    pitching_bb: Optional[int]
-    pitching_k: Optional[int]
-    pitching_war: Optional[float]
-    fielding_gp: Optional[int]
-    fielding_gs: Optional[int]
-    fielding_fip: Optional[float]
-    fielding_tc: Optional[int]
-    fielding_po: Optional[int]
-    fielding_a: Optional[int]
-    fielding_fp: Optional[float]
-    fielding_e: Optional[int]
-    fielding_dp: Optional[int]
-    fielding_rf: Optional[float]
-    fielding_dwar: Optional[float]
-    fielding_pb: Optional[int]
-    fielding_cs: Optional[int]
-    fielding_cs_percent: Optional[float]
-    fielding_sba: Optional[int]
+    batting_gp: Optional[float] = None
+    batting_ab: Optional[float] = None
+    batting_r: Optional[float] = None
+    batting_h: Optional[float] = None
+    batting_avg: Optional[float] = None
+    batting_2b: Optional[float] = None
+    batting_3b: Optional[float] = None
+    batting_hr: Optional[float] = None
+    batting_rbi: Optional[float] = None
+    batting_bb: Optional[float] = None
+    batting_so: Optional[float] = None
+    batting_sb: Optional[float] = None
+    batting_obp: Optional[float] = None
+    batting_slg: Optional[float] = None
+    batting_ops: Optional[float] = None
+    batting_war: Optional[float] = None
+    pitching_gp: Optional[float] = None
+    pitching_gs: Optional[float] = None
+    pitching_w: Optional[float] = None
+    pitching_l: Optional[float] = None
+    pitching_era: Optional[float] = None
+    pitching_sv: Optional[float] = None
+    pitching_ip: Optional[float] = None
+    pitching_h: Optional[float] = None
+    pitching_er: Optional[float] = None
+    pitching_hr: Optional[float] = None
+    pitching_bb: Optional[float] = None
+    pitching_k: Optional[float] = None
+    pitching_war: Optional[float] = None
+    fielding_gp: Optional[float] = None
+    fielding_gs: Optional[float] = None
+    fielding_fip: Optional[float] = None
+    fielding_tc: Optional[float] = None
+    fielding_po: Optional[float] = None
+    fielding_a: Optional[float] = None
+    fielding_fp: Optional[float] = None
+    fielding_e: Optional[float] = None
+    fielding_dp: Optional[float] = None
+    fielding_rf: Optional[float] = None
+    fielding_dwar: Optional[float] = None
+    fielding_pb: Optional[float] = None
+    fielding_cs: Optional[float] = None
+    fielding_cs_percent: Optional[float] = None
+    fielding_sba: Optional[float] = None
 
 
 class MLBTeamSeasonStats(BaseModel):
@@ -201,51 +201,51 @@ class MLBTeamSeasonStats(BaseModel):
     team_name: str
     postseason: bool
     season: int
-    gp: Optional[int] = None
-    batting_ab: Optional[int] = None
-    batting_r: Optional[int] = None
-    batting_h: Optional[int] = None
-    batting_2b: Optional[int] = None
-    batting_3b: Optional[int] = None
-    batting_hr: Optional[int] = None
-    batting_rbi: Optional[int] = None
-    batting_tb: Optional[int] = None
-    batting_bb: Optional[int] = None
-    batting_so: Optional[int] = None
-    batting_sb: Optional[int] = None
+    gp: Optional[float] = None
+    batting_ab: Optional[float] = None
+    batting_r: Optional[float] = None
+    batting_h: Optional[float] = None
+    batting_2b: Optional[float] = None
+    batting_3b: Optional[float] = None
+    batting_hr: Optional[float] = None
+    batting_rbi: Optional[float] = None
+    batting_tb: Optional[float] = None
+    batting_bb: Optional[float] = None
+    batting_so: Optional[float] = None
+    batting_sb: Optional[float] = None
     batting_avg: Optional[float] = None
     batting_obp: Optional[float] = None
     batting_slg: Optional[float] = None
     batting_ops: Optional[float] = None
-    pitching_w: Optional[int] = None
-    pitching_l: Optional[int] = None
+    pitching_w: Optional[float] = None
+    pitching_l: Optional[float] = None
     pitching_era: Optional[float] = None
-    pitching_sv: Optional[int] = None
-    pitching_cg: Optional[int] = None
-    pitching_sho: Optional[int] = None
-    pitching_qs: Optional[int] = None
+    pitching_sv: Optional[float] = None
+    pitching_cg: Optional[float] = None
+    pitching_sho: Optional[float] = None
+    pitching_qs: Optional[float] = None
     pitching_ip: Optional[float] = None
-    pitching_h: Optional[int] = None
-    pitching_er: Optional[int] = None
-    pitching_hr: Optional[int] = None
-    pitching_bb: Optional[int] = None
-    pitching_k: Optional[int] = None
+    pitching_h: Optional[float] = None
+    pitching_er: Optional[float] = None
+    pitching_hr: Optional[float] = None
+    pitching_bb: Optional[float] = None
+    pitching_k: Optional[float] = None
     pitching_oba: Optional[float] = None
     pitching_whip: Optional[float] = None
-    fielding_e: Optional[int] = None
+    fielding_e: Optional[float] = None
     fielding_fp: Optional[float] = None
-    fielding_tc: Optional[int] = None
-    fielding_po: Optional[int] = None
-    fielding_a: Optional[int] = None
+    fielding_tc: Optional[float] = None
+    fielding_po: Optional[float] = None
+    fielding_a: Optional[float] = None
 
 
 class MLBPlayerInjury(BaseModel):
     player: MLBPlayer
-    date: str
-    return_date: Optional[str]
-    type: Optional[str]
-    detail: Optional[str]
-    side: Optional[str]
-    status: Optional[str]
-    long_comment: Optional[str]
-    short_comment: Optional[str]
+    date: Optional[str] = None
+    return_date: Optional[str] = None
+    type: Optional[str] = None
+    detail: Optional[str] = None
+    side: Optional[str] = None
+    status: Optional[str] = None
+    long_comment: Optional[str] = None
+    short_comment: Optional[str] = None

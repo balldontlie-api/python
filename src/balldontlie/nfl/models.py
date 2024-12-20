@@ -1,6 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 
+
 class NFLTeam(BaseModel):
     id: int
     conference: str
@@ -10,6 +11,7 @@ class NFLTeam(BaseModel):
     full_name: str
     abbreviation: str
 
+
 class NFLPlayer(BaseModel):
     id: int
     first_name: str
@@ -18,239 +20,247 @@ class NFLPlayer(BaseModel):
     position_abbreviation: str
     height: str
     weight: str
-    jersey_number: Optional[str]
-    college: Optional[str]
-    experience: Optional[str]
-    age: Optional[int]
+    jersey_number: Optional[str] = None
+    college: Optional[str] = None
+    experience: Optional[str] = None
+    age: Optional[float] = None
     team: Optional[NFLTeam] = None
-    team_id: Optional[int] = None
+    team_id: Optional[float] = None
+
 
 class NFLGame(BaseModel):
     id: int
     visitor_team: NFLTeam
     home_team: NFLTeam
-    summary: Optional[str]
-    venue: Optional[str]
     week: int
     date: str
     season: int
     postseason: bool
     status: str
-    home_team_score: Optional[int]
-    home_team_q1: Optional[int]
-    home_team_q2: Optional[int]
-    home_team_q3: Optional[int]
-    home_team_q4: Optional[int]
-    home_team_ot: Optional[int]
-    visitor_team_score: Optional[int]
-    visitor_team_q1: Optional[int]
-    visitor_team_q2: Optional[int]
-    visitor_team_q3: Optional[int]
-    visitor_team_q4: Optional[int]
-    visitor_team_ot: Optional[int]
+    summary: Optional[str] = None
+    venue: Optional[str] = None
+    home_team_score: Optional[float] = None
+    home_team_q1: Optional[float] = None
+    home_team_q2: Optional[float] = None
+    home_team_q3: Optional[float] = None
+    home_team_q4: Optional[float] = None
+    home_team_ot: Optional[float] = None
+    visitor_team_score: Optional[float] = None
+    visitor_team_q1: Optional[float] = None
+    visitor_team_q2: Optional[float] = None
+    visitor_team_q3: Optional[float] = None
+    visitor_team_q4: Optional[float] = None
+    visitor_team_ot: Optional[float] = None
+
 
 class NFLStats(BaseModel):
     player: NFLPlayer
     team: NFLTeam
     game: NFLGame
-    passing_completions:     Optional[int]
-    passing_attempts:        Optional[int]
-    passing_yards:           Optional[int]
-    yards_per_pass_attempt:  Optional[float]
-    passing_touchdowns:      Optional[int]
-    passing_interceptions:   Optional[int]
-    sacks:                   Optional[int]
-    sacks_loss:              Optional[int]
-    qbr:                     Optional[float]
-    qb_rating:               Optional[float]
-    rushing_attempts:        Optional[int]
-    rushing_yards:           Optional[int]
-    yards_per_rush_attempt:  Optional[float]
-    rushing_touchdowns:      Optional[int]
-    long_rushing:            Optional[int]
-    receptions:              Optional[int]
-    receiving_yards:         Optional[int]
-    yards_per_reception:     Optional[float]
-    receiving_touchdowns:    Optional[int]
-    long_reception:          Optional[int]
-    receiving_targets:       Optional[int]
-    fumbles:                 Optional[int]
-    fumbles_lost:            Optional[int]
-    fumbles_recovered:       Optional[int]
-    total_tackles:           Optional[int]
-    defensive_sacks:         Optional[int]
-    solo_tackles:            Optional[int]
-    tackles_for_loss:        Optional[int]
-    passes_defended:         Optional[int]
-    qb_hits:                 Optional[int]
-    fumbles_touchdowns:      Optional[int]
-    defensive_interceptions: Optional[int]
-    interception_yards:      Optional[int]
-    interception_touchdowns: Optional[int]
-    kick_returns:            Optional[int]
-    kick_return_yards:       Optional[int]
-    yards_per_kick_return:   Optional[float]
-    long_kick_return:        Optional[int]
-    kick_return_touchdowns:  Optional[int]
-    punt_returns:            Optional[int]
-    punt_return_yards:       Optional[int]
-    yards_per_punt_return:   Optional[float]
-    long_punt_return:        Optional[int]
-    punt_return_touchdowns:  Optional[int]
-    field_goal_attempts:     Optional[int]
-    field_goals_made:        Optional[int]
-    field_goal_pct:          Optional[int]
-    long_field_goal_made:    Optional[int]
-    extra_points_made:       Optional[int]
-    total_points:            Optional[int]
-    punts:                   Optional[int]
-    punt_yards:              Optional[int]
-    gross_avg_punt_yards:    Optional[float]
-    touchbacks:              Optional[int]
-    punts_inside_20:         Optional[int]
-    long_punt:               Optional[int]
+    passing_completions: Optional[float] = None
+    passing_attempts: Optional[float] = None
+    passing_yards: Optional[float] = None
+    yards_per_pass_attempt: Optional[float] = None
+    passing_touchdowns: Optional[float] = None
+    passing_interceptions: Optional[float] = None
+    sacks: Optional[float] = None
+    sacks_loss: Optional[float] = None
+    qbr: Optional[float] = None
+    qb_rating: Optional[float] = None
+    rushing_attempts: Optional[float] = None
+    rushing_yards: Optional[float] = None
+    yards_per_rush_attempt: Optional[float] = None
+    rushing_touchdowns: Optional[float] = None
+    long_rushing: Optional[float] = None
+    receptions: Optional[float] = None
+    receiving_yards: Optional[float] = None
+    yards_per_reception: Optional[float] = None
+    receiving_touchdowns: Optional[float] = None
+    long_reception: Optional[float] = None
+    receiving_targets: Optional[float] = None
+    fumbles: Optional[float] = None
+    fumbles_lost: Optional[float] = None
+    fumbles_recovered: Optional[float] = None
+    total_tackles: Optional[float] = None
+    defensive_sacks: Optional[float] = None
+    solo_tackles: Optional[float] = None
+    tackles_for_loss: Optional[float] = None
+    passes_defended: Optional[float] = None
+    qb_hits: Optional[float] = None
+    fumbles_touchdowns: Optional[float] = None
+    defensive_interceptions: Optional[float] = None
+    interception_yards: Optional[float] = None
+    interception_touchdowns: Optional[float] = None
+    kick_returns: Optional[float] = None
+    kick_return_yards: Optional[float] = None
+    yards_per_kick_return: Optional[float] = None
+    long_kick_return: Optional[float] = None
+    kick_return_touchdowns: Optional[float] = None
+    punt_returns: Optional[float] = None
+    punt_return_yards: Optional[float] = None
+    yards_per_punt_return: Optional[float] = None
+    long_punt_return: Optional[float] = None
+    punt_return_touchdowns: Optional[float] = None
+    field_goal_attempts: Optional[float] = None
+    field_goals_made: Optional[float] = None
+    field_goal_pct: Optional[float] = None
+    long_field_goal_made: Optional[float] = None
+    extra_points_made: Optional[float] = None
+    total_points: Optional[float] = None
+    punts: Optional[float] = None
+    punt_yards: Optional[float] = None
+    gross_avg_punt_yards: Optional[float] = None
+    touchbacks: Optional[float] = None
+    punts_inside_20: Optional[float] = None
+    long_punt: Optional[float] = None
+
 
 class NFLStandings(BaseModel):
     team: NFLTeam
-    win_streak: int
-    points_for: int
-    points_against: int
-    playoff_seed: Optional[int]
-    point_differential: int
-    overall_record: str
-    conference_record: str
-    division_record: str
-    wins: int
-    losses: int
-    ties: int
-    home_record: str
-    road_record: str
     season: int
+    win_streak: Optional[float] = None
+    points_for: Optional[float] = None
+    points_against: Optional[float] = None
+    playoff_seed: Optional[float] = None
+    point_differential: Optional[float] = None
+    overall_record: Optional[str] = None
+    conference_record: Optional[str] = None
+    division_record: Optional[str] = None
+    wins: Optional[float] = None
+    losses: Optional[float] = None
+    ties: Optional[float] = None
+    home_record: Optional[str] = None
+    road_record: Optional[str] = None
+
 
 class NFLPlayerInjury(BaseModel):
     player: NFLPlayer
     status: str
-    comment: str
-    date: str
+    comment: Optional[str] = None
+    date: Optional[str] = None
+
 
 class NFLSeasonStats(BaseModel):
     player: NFLPlayer
     games_played: int
     season: int
     postseason: bool
-    passing_completions:                        Optional[int]
-    passing_attempts:                           Optional[int]
-    passing_yards:                              Optional[int]
-    yards_per_pass_attempt:                     Optional[float]
-    passing_touchdowns:                         Optional[int]
-    passing_interceptions:                      Optional[int]
-    passing_yards_per_game:                     Optional[float]
-    passing_completion_pct:                     Optional[float]
-    qbr:                                        Optional[float]
-    rushing_attempts:                           Optional[int]
-    rushing_yards:                              Optional[int]
-    rushing_yards_per_game:                     Optional[float]
-    yards_per_rush_attempt:                     Optional[float]
-    rushing_touchdowns:                         Optional[int]
-    rushing_fumbles:                            Optional[int]
-    rushing_fumbles_lost:                       Optional[int]
-    rushing_first_downs:                        Optional[int]
-    receptions:                                 Optional[int]
-    receiving_yards:                            Optional[int]
-    yards_per_reception:                        Optional[float]
-    receiving_touchdowns:                       Optional[int]
-    receiving_fumbles:                          Optional[int]
-    receiving_fumbles_lost:                     Optional[int]
-    receiving_first_downs:                      Optional[int]
-    receiving_targets:                          Optional[int]
-    receiving_yards_per_game:                   Optional[float]
-    fumbles_forced:                             Optional[int]
-    fumbles_recovered:                          Optional[int]
-    total_tackles:                              Optional[int]
-    defensive_sacks:                            Optional[float]
-    defensive_sack_yards:                       Optional[int]
-    solo_tackles:                               Optional[int]
-    assist_tackles:                             Optional[int]
-    fumbles_touchdowns:                         Optional[int]
-    defensive_interceptions:                    Optional[int]
-    interception_touchdowns:                    Optional[int]
-    kick_returns:                               Optional[int]
-    kick_return_yards:                          Optional[float]
-    yards_per_kick_return:                      Optional[float]
-    kick_return_touchdowns:                     Optional[int]
-    punt_returner_returns:                      Optional[int]
-    punt_returner_return_yards:                 Optional[int]
-    yards_per_punt_return:                      Optional[float]
-    punt_return_touchdowns:                     Optional[int]
-    field_goal_attempts:                        Optional[int]
-    field_goals_made:                           Optional[int]
-    field_goal_pct:                             Optional[float]
-    punts:                                      Optional[int]
-    punt_yards:                                 Optional[int]
-    field_goals_made_1_19:                      Optional[int]
-    field_goals_made_20_29:                     Optional[int]
-    field_goals_made_30_39:                     Optional[int]
-    field_goals_made_40_49:                     Optional[int]
-    field_goals_made_50:                        Optional[int]
-    field_goals_attempts_1_19:                  Optional[int]
-    field_goals_attempts_20_29:                 Optional[int]
-    field_goals_attempts_30_39:                 Optional[int]
-    field_goals_attempts_40_49:                 Optional[int]
-    field_goals_attempts_50:                    Optional[int]
+    passing_completions: Optional[float] = None
+    passing_attempts: Optional[float] = None
+    passing_yards: Optional[float] = None
+    yards_per_pass_attempt: Optional[float] = None
+    passing_touchdowns: Optional[float] = None
+    passing_interceptions: Optional[float] = None
+    passing_yards_per_game: Optional[float] = None
+    passing_completion_pct: Optional[float] = None
+    qbr: Optional[float] = None
+    rushing_attempts: Optional[float] = None
+    rushing_yards: Optional[float] = None
+    rushing_yards_per_game: Optional[float] = None
+    yards_per_rush_attempt: Optional[float] = None
+    rushing_touchdowns: Optional[float] = None
+    rushing_fumbles: Optional[float] = None
+    rushing_fumbles_lost: Optional[float] = None
+    rushing_first_downs: Optional[float] = None
+    receptions: Optional[float] = None
+    receiving_yards: Optional[float] = None
+    yards_per_reception: Optional[float] = None
+    receiving_touchdowns: Optional[float] = None
+    receiving_fumbles: Optional[float] = None
+    receiving_fumbles_lost: Optional[float] = None
+    receiving_first_downs: Optional[float] = None
+    receiving_targets: Optional[float] = None
+    receiving_yards_per_game: Optional[float] = None
+    fumbles_forced: Optional[float] = None
+    fumbles_recovered: Optional[float] = None
+    total_tackles: Optional[float] = None
+    defensive_sacks: Optional[float] = None
+    defensive_sack_yards: Optional[float] = None
+    solo_tackles: Optional[float] = None
+    assist_tackles: Optional[float] = None
+    fumbles_touchdowns: Optional[float] = None
+    defensive_interceptions: Optional[float] = None
+    interception_touchdowns: Optional[float] = None
+    kick_returns: Optional[float] = None
+    kick_return_yards: Optional[float] = None
+    yards_per_kick_return: Optional[float] = None
+    kick_return_touchdowns: Optional[float] = None
+    punt_returner_returns: Optional[float] = None
+    punt_returner_return_yards: Optional[float] = None
+    yards_per_punt_return: Optional[float] = None
+    punt_return_touchdowns: Optional[float] = None
+    field_goal_attempts: Optional[float] = None
+    field_goals_made: Optional[float] = None
+    field_goal_pct: Optional[float] = None
+    punts: Optional[float] = None
+    punt_yards: Optional[float] = None
+    field_goals_made_1_19: Optional[float] = None
+    field_goals_made_20_29: Optional[float] = None
+    field_goals_made_30_39: Optional[float] = None
+    field_goals_made_40_49: Optional[float] = None
+    field_goals_made_50: Optional[float] = None
+    field_goals_attempts_1_19: Optional[float] = None
+    field_goals_attempts_20_29: Optional[float] = None
+    field_goals_attempts_30_39: Optional[float] = None
+    field_goals_attempts_40_49: Optional[float] = None
+    field_goals_attempts_50: Optional[float] = None
+
 
 class NFLAdvancedRushingStats(BaseModel):
     player: NFLPlayer
     season: int
     week: int
-    avg_time_to_los: Optional[float]
-    expected_rush_yards: Optional[float]
-    rush_attempts: Optional[int]
-    rush_pct_over_expected: Optional[float]
-    rush_touchdowns: Optional[int]
-    rush_yards: Optional[int]
-    rush_yards_over_expected: Optional[float]
-    rush_yards_over_expected_per_att: Optional[float]
-    efficiency: Optional[float]
-    percent_attempts_gte_eight_defenders: Optional[float]
-    avg_rush_yards: Optional[float]
+    avg_time_to_los: Optional[float] = None
+    expected_rush_yards: Optional[float] = None
+    rush_attempts: Optional[float] = None
+    rush_pct_over_expected: Optional[float] = None
+    rush_touchdowns: Optional[float] = None
+    rush_yards: Optional[float] = None
+    rush_yards_over_expected: Optional[float] = None
+    rush_yards_over_expected_per_att: Optional[float] = None
+    efficiency: Optional[float] = None
+    percent_attempts_gte_eight_defenders: Optional[float] = None
+    avg_rush_yards: Optional[float] = None
+
 
 class NFLAdvancedPassingStats(BaseModel):
     player: NFLPlayer
     season: int
     week: int
-    aggressiveness: Optional[float]
-    attempts: Optional[int]
-    avg_air_distance: Optional[float]
-    avg_air_yards_differential: Optional[float]
-    avg_air_yards_to_sticks: Optional[float]
-    avg_completed_air_yards: Optional[float]
-    avg_intended_air_yards: Optional[float]
-    avg_time_to_throw: Optional[float]
-    completion_percentage: Optional[float]
-    completion_percentage_above_expectation: Optional[float]
-    completions: Optional[int]
-    expected_completion_percentage: Optional[float]
-    games_played: Optional[int]
-    interceptions: Optional[int]
-    max_air_distance: Optional[float]
-    max_completed_air_distance: float
-    pass_touchdowns: Optional[int]
-    pass_yards: Optional[int]
-    passer_rating: Optional[float]
+    aggressiveness: Optional[float] = None
+    attempts: Optional[float] = None
+    avg_air_distance: Optional[float] = None
+    avg_air_yards_differential: Optional[float] = None
+    avg_air_yards_to_sticks: Optional[float] = None
+    avg_completed_air_yards: Optional[float] = None
+    avg_intended_air_yards: Optional[float] = None
+    avg_time_to_throw: Optional[float] = None
+    completion_percentage: Optional[float] = None
+    completion_percentage_above_expectation: Optional[float] = None
+    completions: Optional[float] = None
+    expected_completion_percentage: Optional[float] = None
+    games_played: Optional[float] = None
+    interceptions: Optional[float] = None
+    max_air_distance: Optional[float] = None
+    max_completed_air_distance: float = None
+    pass_touchdowns: Optional[float] = None
+    pass_yards: Optional[float] = None
+    passer_rating: Optional[float] = None
+
 
 class NFLAdvancedReceivingStats(BaseModel):
     player: NFLPlayer
     season: int
     week: int
-    avg_cushion: Optional[float]
-    avg_expected_yac: Optional[float]
-    avg_intended_air_yards: Optional[float]
-    avg_separation: Optional[float]
-    avg_yac: Optional[float]
-    avg_yac_above_expectation: Optional[float]
-    catch_percentage: Optional[float]
-    percent_share_of_intended_air_yards: Optional[float]
-    rec_touchdowns: Optional[int]
-    receptions: Optional[int]
-    targets: Optional[int]
-    yards: Optional[int]
+    avg_cushion: Optional[float] = None
+    avg_expected_yac: Optional[float] = None
+    avg_intended_air_yards: Optional[float] = None
+    avg_separation: Optional[float] = None
+    avg_yac: Optional[float] = None
+    avg_yac_above_expectation: Optional[float] = None
+    catch_percentage: Optional[float] = None
+    percent_share_of_intended_air_yards: Optional[float] = None
+    rec_touchdowns: Optional[float] = None
+    receptions: Optional[float] = None
+    targets: Optional[float] = None
+    yards: Optional[float] = None

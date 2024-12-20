@@ -92,7 +92,8 @@ def test_list_nfl_season_stats(client):
 
 
 def test_get_advanced_rushing_stats(client):
-    response = client.nfl.advanced_stats.rushing.get(season=2004)
+    response = client.nfl.advanced_stats.rushing.get(season=2024)
+    print(response)
     stats = response.data[0]
     assert stats.player is not None
     assert stats.rush_yards is not None

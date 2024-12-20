@@ -33,9 +33,6 @@ class PaginatedListResponse(BaseResponse[List[T]]):
 
 class BaseAPI(Generic[T]):
     model_class = None
-    _dev_mode = os.environ.get("BALLDONTLIE_ENV", "").lower() in [
-        "dev",
-    ]
 
     def __init__(self, client):
         self.client = client
@@ -139,11 +136,7 @@ class BaseAPI(Generic[T]):
         processed_params = self._prepare_params(params) if params else None
         response = self._get(path, params=processed_params)
 
-        if self._dev_mode:
-            data = self.model_class(**response["data"])
-        else:
-            # Use model_construct in prod so that we don't blow up on validation errors
-            data = self.model_class.model_construct(**response["data"])
+        data = self.model_class(**response["data"])
 
         return BaseResponse[T](data=data)
 
@@ -153,12 +146,7 @@ class BaseAPI(Generic[T]):
         processed_params = self._prepare_params(params) if params else None
         response = self._get(path, params=processed_params)
 
-        if self._dev_mode:
-            data = [self.model_class(**item) for item in response["data"]]
-        else:
-            data = [
-                self.model_class.model_construct(**item) for item in response["data"]
-            ]
+        data = [self.model_class(**item) for item in response["data"]]
 
         return ListResponse[T](data=data)
 
@@ -168,11 +156,7 @@ class BaseAPI(Generic[T]):
         processed_params = self._prepare_params(params)
         response = self._get(path, params=processed_params)
 
-        if self._dev_mode:
-            data = [self.model_class(**item) for item in response["data"]]
-        else:
-            data = [
-                self.model_class.model_construct(**item) for item in response["data"]
-            ]
+        print(response)
+        data = [self.model_class(**item) for item in response["data"]]
 
         return PaginatedListResponse[T](data=data, meta=response.get("meta", {}))

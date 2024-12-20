@@ -3,8 +3,6 @@ import pytest
 from balldontlie.exceptions import (
     AuthenticationError,
     NotFoundError,
-    RateLimitError,
-    ServerError,
 )
 
 
