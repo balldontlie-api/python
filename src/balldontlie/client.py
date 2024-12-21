@@ -19,6 +19,7 @@ class BalldontlieAPI:
             "Authorization": self.api_key,
             "Content-Type": "application/json",
             "Accept": "application/json",
+            "x-bdl-client": "python",
         }
 
     def _build_url(self, path: str) -> str:
