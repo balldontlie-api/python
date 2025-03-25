@@ -156,7 +156,6 @@ class BaseAPI(Generic[T]):
         processed_params = self._prepare_params(params)
         response = self._get(path, params=processed_params)
 
-        print(response)
         data = [self.model_class(**item) for item in response["data"]]
 
         return PaginatedListResponse[T](data=data, meta=response.get("meta", {}))
